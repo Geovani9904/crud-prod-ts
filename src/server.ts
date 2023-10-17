@@ -36,6 +36,7 @@ export class Server{
         });
 
         this.app.use('/api/crud', routes.CrudRoute);
+        this.app.use('/api/categoria', routes.CategoriaRoute);
     }
 
     listen(){

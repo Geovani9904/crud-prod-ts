@@ -5,7 +5,7 @@ export const crudService = {
     return await CrudModel.find();
   },
 
-  create: async (entity: object) => {
+  create: async (entity: { nombre: string, precio: number, promocion: boolean, imagen: string, categoria: string }) => {
     return await CrudModel.create(entity);
   },
 

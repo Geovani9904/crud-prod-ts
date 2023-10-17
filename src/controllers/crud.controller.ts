@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { crudService } from "../services";
+import { categoriaService, crudService } from "../services";
 
 export const crudController = {
   getAllCrud: async (req: Request, res: Response) => {
@@ -15,7 +15,25 @@ export const crudController = {
 
   create: async (req: Request, res: Response) => {
     try {
-      const data = await crudService.create(req.body);
+      const { nombre, precio, promocion, imagen } = req.body;
+      const categoriaNombre = req.body.categoriaNombre;
+
+      const categoria = await categoriaService.getByName(categoriaNombre);
+
+      if (!categoria) {
+        return res.status(400).json({
+          message: "La categoria no existe",
+        });
+      }
+
+      const data = await crudService.create({
+        nombre,
+        precio,
+        promocion,
+        imagen,
+        categoria: categoria._id,
+      });
+
       return res.json(data);
     } catch (error: any) {
       res.status(400).json({

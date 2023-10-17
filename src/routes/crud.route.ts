@@ -1,10 +1,11 @@
 import { Router } from "express";
 
-import { crudController } from "../controllers";
+import { categoriaController, crudController } from "../controllers";
 
 const router = Router();
 
 router.get('/', crudController.getAllCrud);
+router.get('/categorias/:nombre', categoriaController.getByName);
 
 router.post('/',crudController.create);
 
