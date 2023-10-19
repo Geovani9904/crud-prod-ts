@@ -91,7 +91,7 @@ router.patch('/:id',crudController.update);
  *     parameters:
  *        - in: https://crud-prod-ts.onrender.com
  *          name: /api/crud/
- *          description: La ruta para eliminar
+ *          description: La ruta para eliminar producto
  *     responses:
  *      200:
  *        description: Producto eliminado
