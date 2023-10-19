@@ -2,43 +2,101 @@ import { Router } from "express";
 import { categoriaController, crudController } from "../controllers";
 import swaggerJSDoc from "swagger-jsdoc";
 
+const router = Router();
 /**
  * @swagger
- * /:
+ * /api/crud/:
  *   get:
  *     summary: Listado de todo los productos.
+ *     description: Este es para listar todos los productos
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - in: https://crud-prod-ts.onrender.com
+ *          name: /api/crud/
+ *          description: La ruta para acceder a la ruta y listar los productos
+ *     responses:
+ *      200:
+ *        description: Listado de todos los productos
+ *        schema:
+ *        type: json
  */
-
-const router = Router();
-
 //listado de productos
 router.get('/', crudController.getAllCrud);
 /**
  * @swagger
- * /categorias/:nombre:
+ * /api/crud/categorias/:nombre:
  *   get:
- *     summary: Esta lista la categoria existente por nombre de la tabla categoria y pasarle en el metodo post al registrar el producto.
+ *     summary: Listado de las categorias existentes y asignarle al registro de productos.
+ *     description: Este es para listar todos las categorias
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - in: https://crud-prod-ts.onrender.com
+ *          name: /api/crud/categorias/:nombre
+ *          description: La ruta para acceder a la ruta y listar las categorias
+ *     responses:
+ *      200:
+ *        description: Listado de todos las categorias
+ *        schema:
+ *        type: json
  */
 router.get('/categorias/:nombre', categoriaController.getByName);
 /**
  * @swagger
- * /:
+ * /api/crud/:
  *   post:
- *     summary: Este es la ruta para registrar el producto y su categoria.
+ *     summary: Registro de productos.
+ *     description: Este es para registrar todos los productos
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - in: https://crud-prod-ts.onrender.com
+ *          name: /api/crud/
+ *          description: La ruta para registrar productos.
+ *     responses:
+ *      200:
+ *        description: Producto registrado
+ *        schema:
+ *        type: json
  */
 router.post('/',crudController.create);
 /**
  * @swagger
- * /:id:
+ * /api/crud/:
  *   patch:
- *     summary: Este es la ruta para actualizar datos con algunos parametros.
+ *     summary: Este es para actualizar productos.
+ *     description: Este es para actualizar la tabla productos con algunos parametros
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - in: https://crud-prod-ts.onrender.com
+ *          name: /api/crud/
+ *          description: La ruta para actualizar productos
+ *     responses:
+ *      200:
+ *        description: Producto actualizado
+ *        schema:
+ *        type: json
  */
 router.patch('/:id',crudController.update);
 /**
  * @swagger
- * /:id:
+ * /api/crud/:id:
  *   delete:
- *     summary: Este es la ruta para eliminar producto con su idproducto.
+ *     summary: Este es para eliminar productos.
+ *     description: Columna para eliminar productos
+ *     produces:
+ *        - application/json
+ *     parameters:
+ *        - in: https://crud-prod-ts.onrender.com
+ *          name: /api/crud/
+ *          description: La ruta para eliminar
+ *     responses:
+ *      200:
+ *        description: Producto eliminado
+ *        schema:
+ *        type: json
  */
 router.delete('/:id',crudController.delete);
 
