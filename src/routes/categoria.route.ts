@@ -8,7 +8,7 @@ const router = Router();
  * /crud/categoria   "/":
  *   get:
  *     summary: categoria.route.ts
- *     description: Este es la ruta para listar categoria.
+ *     description: Este es la ruta para listar categoria toda la categoria.
  */
 router.get('/', categoriaController.getAllCategorias);
 /**
