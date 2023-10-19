@@ -5,6 +5,7 @@ import cors from "cors";
 import {connectDB} from './database';
 import {PORT} from './config';
 import {routes} from './routes';
+import swaggerRouter from "../swagger.route";
 
 
 export class Server{
@@ -25,7 +26,6 @@ export class Server{
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());
-
     }
 
     routes(){
@@ -37,6 +37,7 @@ export class Server{
 
         this.app.use('/api/crud', routes.CrudRoute);
         this.app.use('/api/categoria', routes.CategoriaRoute);
+        this.app.use('/', swaggerRouter);
     }
 
     listen(){
